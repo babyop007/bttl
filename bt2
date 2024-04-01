@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <math.h>
+
+// Hàm kiểm tra số chính phương
+int is_square(int number) {
+    int sqrt_num = (int)sqrt(number);
+    return sqrt_num * sqrt_num == number;
+}
+
+// Hàm đếm và in ra các số chính phương nhỏ hơn n
+void count_and_print_squares(int n) {
+    int count = 0;
+    printf("Các số chính phương nhỏ hơn %d là: ", n);
+    for (int i = 1; i < n; i++) {
+        if (is_square(i)) {
+            printf("%d, ", i);
+            count++;
+        }
+    }
+    printf("\nTổng cộng có %d số chính phương.\n", count);
+}
+
+// Hàm main
+int main() {
+    int n;
+    printf("Nhập số nguyên dương n: ");
+    scanf("%d", &n);
+    count_and_print_squares(n);
+    return 0;
+}
