@@ -1,0 +1,48 @@
+import anvil.server
+from ._anvil_designer import ConfigureSettingsTemplate
+import anvil
+from anvil import tableau
+from trexjacket.api import get_dashboard
+from trexjacket import dialogs
+
+@dialogs.dialog_form('settings_config')
+class ConfigureSettings(ConfigureSettingsTemplate):
+    def __init__(self, **properties):
+        self.dashboard = get_dashboard()
+        self.item['input_text'] = self.dashboard.settings['sample_setting']
+        self.init_components(**properties)
+    # Hàm Insertion Sort
+    def insertion_sort(self, arr):
+        for i in range(1, len(arr)):
+            key = arr[i]
+            j = i - 1
+            while j >= 0 and key < arr[j]:
+                arr[j + 1] = arr[j]
+                j -= 1
+            arr[j + 1] = key
+    def btn_submit_click(self, **event_args):
+        # Update the value of the dashboard setting.
+        self.dashboard.settings['sample_setting'] = self.item['input_text']
+        self.raise_event('x-close-alert')
+    
+
+
+    def text_box_1_pressed_enter(self, **event_args):
+      """This method is called when the user presses Enter in this text box"""
+      pass
+
+    def button_sort_click_click(self, **event_args):
+      """This method is called when the button is clicked"""
+      def button_sort_click(self, **event_args):
+    # Lấy chuỗi nhập vào và chuyển nó thành danh sách các số nguyên
+    str_numbers = self.text_box_numbers.text
+    number_list = [int(n) for n in str_numbers.split(',') if n.strip().isdigit()]
+
+    # Sắp xếp danh sách số
+    self.insertion_sort(number_list)
+
+    # Hiển thị kết quả
+    self.label_result.text = ', '.join(str(num) for num in number_list
+      pass
+      
+      
